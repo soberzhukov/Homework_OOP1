@@ -108,7 +108,7 @@ kopita_goat = Goat('Копыта', 17, 3)
 kria_duck = Duck('Кряква', 4, 1)
 
 def weight_total_and_heaviest():
-    list_weight = [
+    list_animals = [
         gray_goose,
         white_goose,
         mania_cow,
@@ -122,9 +122,8 @@ def weight_total_and_heaviest():
     ]
     weight_default = 0
     weight_sum = 0
-    for animal in list_weight:
+    for animal in list_animals:
         weight_sum += animal.weight
-    for animal in list_weight:
         if animal.weight > weight_default:
             weight_default = animal.weight
             favorite_animal = animal.name
