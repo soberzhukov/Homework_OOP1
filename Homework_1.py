@@ -1,28 +1,39 @@
 
 # Общие параметры (кличка, голос, вес)
 
-class Goose:
-    def __init__(self, name, weight=0, eggs=0):
+
+class Animal:
+    def __init__(self, name, weight=0):
         self.name = name
-        self.vote = 'га-га-га'
         self.weight = weight
-        self.eggs = eggs
     def feed(self):
         self.weight += 1
+
+class Bird:
+    def __init__(self, name, weight=0):
+        self.name = name
+        self.weight = weight
+
     def collect_eggs(self):
         if self.eggs != 0:
             self.eggs -= 1
         else:
             print('Нечего собирать')
 
-class Cow:
+class Goose(Animal, Bird):
+    def __init__(self, name, weight=0, eggs=0):
+        self.vote = 'га-га-га'
+        self.eggs = eggs
+        super().__init__(name, weight)
+
+
+
+class Cow(Animal):
     def __init__(self, name, weight=0, milk=0):
-        self.name = name
+        super().__init__(name, weight)
         self.vote = 'муууу'
-        self.weight = weight
         self.milk = milk
-    def feed(self):
-        self.weight += 1
+
     def collect_milk(self):
         if self.milk != 0:
             self.milk -= 1
@@ -30,14 +41,12 @@ class Cow:
             print('Нечего собирать')
 
 
-class Sheep:
+class Sheep(Animal):
     def __init__(self, name, weight=0, wool=0):
-        self.name = name
+        super().__init__(name, weight)
         self.vote = 'беее'
-        self.weight = weight
         self.wool = wool
-    def feed(self):
-        self.weight += 1
+
     def collect_wool(self):
         if self.wool != 0:
             self.wool -= 1
@@ -46,31 +55,22 @@ class Sheep:
 
 
 
-class Chicken:
+class Chicken(Animal, Bird):
     def __init__(self, name, weight=0, eggs=0):
-        self.name = name
+        super().__init__(name, weight)
         self.vote = 'ко-ко-ко'
-        self.weight = weight
         self.eggs = eggs
-    def feed(self):
-        self.weight += 1
-    def collect_eggs(self):
-        if self.eggs != 0:
-            self.eggs -= 1
-        else:
-            print('Нечего собирать')
 
 
 
 
-class Goat:
+
+class Goat(Animal):
     def __init__(self, name, weight=0, milk=0):
-        self.name = name
+        super().__init__(name, weight)
         self.vote = 'мееее'
-        self.weight = weight
         self.milk = milk
-    def feed(self):
-        self.weight += 1
+
     def collect_milk(self):
         if self.milk != 0:
             self.milk -= 1
@@ -80,19 +80,12 @@ class Goat:
 
 
 
-class Duck:
+class Duck(Animal, Bird):
     def __init__(self, name, weight=0, eggs=0):
-        self.name = name
+        super().__init__(name, weight)
         self.vote = 'кря кря'
-        self.weight = weight
         self.eggs = eggs
-    def feed(self):
-        self.weight += 1
-    def collect_eggs(self):
-        if self.eggs != 0:
-            self.eggs -= 1
-        else:
-            print('Нечего собирать')
+
 
 
 
@@ -129,7 +122,7 @@ def weight_total_and_heaviest():
             favorite_animal = animal.name
     return f'Общий вес: {weight_sum}. Самое тяжелое животное: {favorite_animal}'
 
-print(weight_total_and_heaviest())
+#print(weight_total_and_heaviest())
 
 
 

@@ -12,6 +12,7 @@ class Album:
         self.name = name
         self.group = group
         self.list_track = []
+
     def get_tracks(self):
         if not self.list_track:
             print('В этом альбоме пока нет треков')
@@ -33,6 +34,8 @@ class Album:
             print(sum_tracks_duration)
 
 
+# self.__dict__['list_track'] = [i.name for i in self.__dict__['list_track']]
+
 misery = Track('Misery', 180)
 anna = Track('Anna', 167)
 little_child = Track('Little Child', 192)
@@ -44,6 +47,10 @@ with_the_beatles = Album('With the Beatles', 'The Beatles')
 with_the_beatles.list_track = [little_child]
 
 
+
+
+print(with_the_beatles.list_track)
 with_the_beatles.get_duration()
 please_please_me.get_duration()
+
 
