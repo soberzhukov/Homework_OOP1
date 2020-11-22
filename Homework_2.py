@@ -2,9 +2,9 @@ class Track:
     def __init__(self, name, duration=0):
         self.name = name
         self.duration = int(duration)
-    def show(self):
-        print(f'<{self.name}-{self.duration}>')
 
+    def __str__(self):
+        return f'{self.name}-{self.duration}sec'
 
 
 class Album:
@@ -18,12 +18,14 @@ class Album:
             print('В этом альбоме пока нет треков')
         else:
             for track in self.list_track:
-                track.show()
+                return track
+
     def add_track(self, track):
        if track in self.list_track:
            print('Такой трек уже есть')
        else:
            self.list_track.append(track)
+
     def get_duration(self):
         if not self.list_track:
             print('В этом альбоме пока нет треков')
@@ -33,8 +35,11 @@ class Album:
                 sum_tracks_duration += track.duration
             print(sum_tracks_duration)
 
+    def __str__(self):
+        A = f'Name group: {self.group}\nName album: {self.name}\nTracks:\n	'
+        B = f'\n	'.join([track.__str__() for track in self.list_track])
+        return A+B
 
-# self.__dict__['list_track'] = [i.name for i in self.__dict__['list_track']]
 
 misery = Track('Misery', 180)
 anna = Track('Anna', 167)
@@ -48,9 +53,7 @@ with_the_beatles.list_track = [little_child]
 
 
 
-
-print(with_the_beatles.list_track)
-with_the_beatles.get_duration()
-please_please_me.get_duration()
-
+print(please_please_me)
+print()
+print(with_the_beatles)
 
