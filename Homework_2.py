@@ -6,6 +6,10 @@ class Track:
     def __str__(self):
         return f'{self.name}-{self.duration}sec'
 
+    def __lt__(self, other):
+        if not isinstance(other, Track):
+            print('Это не класс Track')
+        return self.duration < other.duration
 
 class Album:
     def __init__(self, name, group):
@@ -56,4 +60,5 @@ with_the_beatles.list_track = [little_child]
 print(please_please_me)
 print()
 print(with_the_beatles)
-
+print()
+print(misery > little_child)
